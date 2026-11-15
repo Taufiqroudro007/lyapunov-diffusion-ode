@@ -316,20 +316,29 @@ def run_2d_experiment():
     # learned score model or an empirical high-dimensional benchmark.
     axis = np.linspace(-4.0, 4.0, 11)
     xT_values = np.array([[x, y] for x in axis for y in axis])
+    resolutions = [600, 1200, 2400, 4800, 9600]
+
     ftle_rows = []
-    ftle_values = {}
-    for n in [600, 1200, 2400, 4800, 9600]:
-        vals = np.array([compute_ftle_2d(x, n) for x in xT_values])
-        ftle_values[n] = vals
-        ftle_rows.append({
-            "rk4_steps": n, "initial_condition_count": len(xT_values),
-            "ftle_max_minimum_singular_direction_min": float(np.min(vals)),
-            "max_ftle": float(np.max(vals)),
-            "mean_max_ftle": float(np.mean(vals)),
-        })
-    ftle_rows[-1]["max_abs_change_from_previous"] = float(
-        np.max(np.abs(ftle_values[2400] - ftle_values[1200]))
-    )
+
+    for i, n in enumerate(resolutions):
+        vals = ftle_values[n]
+
+        if i == 0:
+            change = np.nan
+        else:
+            previous_n = resolutions[i - 1]
+            change = float(
+            np.nanmax(np.abs(vals - ftle_values[previous_n]))
+        )
+
+    ftle_rows.append({
+        "rk4_steps": n,
+        "initial_condition_count": len(vals),
+        "minimum_maximal_ftle": float(np.nanmin(vals)),
+        "max_ftle": float(np.nanmax(vals)),
+        "mean_max_ftle": float(np.nanmean(vals)),
+        "max_abs_change_from_previous": change,
+    })
     write_csv(RESULTS / "ftle_2d_resolution.csv", ftle_rows)
 
     # Reference refinement and matched-NFE Euler/Heun/RK4 comparison in 2D.
@@ -382,7 +391,7 @@ def run_2d_experiment():
     write_csv(RESULTS / "solver_comparison_2d.csv", rows)
 
     # Plot maximum FTLE over the grid as a spatial field.
-    vals = ftle_values[2400].reshape(len(axis), len(axis))
+    vals = ftle_values[9600].reshape(len(axis), len(axis)).T
     plt.figure(figsize=(6.2, 5.2))
     im = plt.imshow(vals, origin="lower", extent=[-4, 4, -4, 4],
                     aspect="equal")
