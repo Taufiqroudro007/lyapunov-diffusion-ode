@@ -1,0 +1,28 @@
+{
+  "model": "equal-weight symmetric Gaussian mixture",
+  "mu_1d": 2.0,
+  "mu_2d": [
+    2.0,
+    0.0
+  ],
+  "initial_component_standard_deviation": 0.2,
+  "beta_min": 0.1,
+  "beta_max": 20.0,
+  "T": 1.0,
+  "epsilon": 0.0001,
+  "reverse_integration_interval": [
+    0.0,
+    0.9999
+  ],
+  "reverse_time_definition": "tau = T - t",
+  "reverse_vector_field": "b(x,tau) = -v(x,T-tau)",
+  "jacobian_sign": "J_reverse = -J_forward",
+  "random_seed": 20261115,
+  "1d_ftle_initial_conditions": "25 equally spaced x_T values in [-3,3]",
+  "1d_solver_initial_conditions": "60 equally spaced values in [-2.5,2.5], excluding |x_T|<=0.05",
+  "2d_initial_conditions": "11x11 Cartesian grid over [-4,4]^2",
+  "failure_definition": "a trajectory is failed only if a computed state becomes non-finite",
+  "error_definition": "errors are computed over finite trajectories; failure count/rate reported separately",
+  "solver_cost": "matched RHS evaluations: Euler 1, Heun 2, classical RK4 4 per step",
+  "reference_note": "refinement differences are reported; convergence must be checked from generated CSV files"
+}
