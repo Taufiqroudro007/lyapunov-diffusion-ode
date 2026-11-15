@@ -1,0 +1,13 @@
+nfe_budget,method,steps,initial_condition_count,mae_terminal_euclidean_error,rmse_terminal_euclidean_error,max_terminal_euclidean_error,failure_count,failure_rate,error_population
+60,euler,60,121,0.014744911704008684,0.016061917906093993,0.025457126239526527,0,0.0,finite trajectories only; failures reported separately
+60,heun,30,121,0.00532415175824509,0.005795159960491385,0.009653685580445296,0,0.0,finite trajectories only; failures reported separately
+60,rk4,15,121,0.0007468432036530341,0.0008128321693493613,0.0013557980083906754,0,0.0,finite trajectories only; failures reported separately
+120,euler,120,121,0.0075217030470769615,0.008193664787766917,0.012979920086288711,0,0.0,finite trajectories only; failures reported separately
+120,heun,60,121,0.0014147501207577209,0.0015399809021099957,0.0025671232227397417,0,0.0,finite trajectories only; failures reported separately
+120,rk4,30,121,3.804181029567674e-05,4.140152027840397e-05,6.903612364531165e-05,0,0.0,finite trajectories only; failures reported separately
+240,euler,240,121,0.0038014121100924704,0.004141042943705274,0.00655856508134877,0,0.0,finite trajectories only; failures reported separately
+240,heun,120,121,0.00036481503306752744,0.00039711553780430616,0.0006621740846979468,0,0.0,finite trajectories only; failures reported separately
+240,rk4,60,121,1.7513574642356983e-06,1.9059212283535214e-06,3.1766310083892943e-06,0,0.0,finite trajectories only; failures reported separately
+480,euler,480,121,0.0019112780041803097,0.0020820438356801622,0.0032971986485669747,0,0.0,finite trajectories only; failures reported separately
+480,heun,240,121,9.258729930412956e-05,0.00010078583376421532,0.00016807787831971992,0,0.0,finite trajectories only; failures reported separately
+480,rk4,120,121,9.582384894532562e-08,1.0427735757407637e-07,1.7375646788889386e-07,0,0.0,finite trajectories only; failures reported separately
