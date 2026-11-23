@@ -30,20 +30,57 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
+
 ```
+
 ---
+
 ## 3. Running the Experiments
-From the repository root directory:Verify analytical derivations and closed-form central-trajectory FTLE:Bashpython analytical_derivations.py
-Run all numerical experiments and generate CSV outputs and figures:Bashpython main_experiments.py
+
+From the repository root directory:
+
+1. **Verify analytical derivations and closed-form central-trajectory FTLE:**
+```bash
+python analytical_derivations.py
+
+```
+
+
+2. **Run all numerical experiments and generate CSV outputs and figures:**
+```bash
+python main_experiments.py
+
+```
+
+
+
 ---
+
 ## 4. Repository Structure & Output Files
-analytical_derivations.py: Closed-form score, Jacobian, critical time $t_c$, and analytical $\Lambda(0)$ evaluation.main_experiments.py: Full numerical suite generating all CSV tables in results/ and figures in plots/.results/run_metadata.json: Experiment configuration, parameters, and execution metadata.results/reference_1d_refinement.csv: 1D RK4 terminal-state self-convergence differences (Table I).results/reference_2d_refinement.csv: 2D RK4 terminal-state self-convergence differences (Table II).results/ftle_1d_resolution.csv & plots/ftle_1d_resolution.png: 1D reverse-time FTLE resolution profiles (Fig. 1).results/ftle_1d_finite_difference.csv: Variational vs. centered finite-difference relative error validation.results/ftle_2d_resolution.csv & plots/ftle_2d_heatmap.png: 2D maximal-singular-value FTLE statistics and heatmap (Fig. 2).results/solver_comparison_1d.csv, plots/solver_comparison_1d.png, & plots/failure_rate_1d.png: 1D matched-NFE solver comparison and nonfinite trajectory check (Table III, Fig. 3, and Fig. 4).results/solver_comparison_2d.csv & plots/solver_comparison_2d.png: 2D matched-NFE solver comparison (Table IV and Fig. 5).
+
+* `analytical_derivations.py`: Closed-form score, Jacobian, critical time $t_c$, and analytical $\Lambda(0)$ evaluation.
+* `main_experiments.py`: Full numerical suite generating all CSV tables in `results/` and figures in `plots/`.
+* `results/run_metadata.json`: Experiment configuration, parameters, and execution metadata.
+* `results/reference_1d_refinement.csv`: 1D RK4 terminal-state self-convergence differences (Table I).
+* `results/reference_2d_refinement.csv`: 2D RK4 terminal-state self-convergence differences (Table II).
+* `results/ftle_1d_resolution.csv` & `plots/ftle_1d_resolution.png`: 1D reverse-time FTLE resolution profiles (Fig. 1).
+* `results/ftle_1d_finite_difference.csv`: Variational vs. centered finite-difference relative error validation.
+* `results/ftle_2d_resolution.csv` & `plots/ftle_2d_heatmap.png`: 2D maximal-singular-value FTLE statistics and heatmap (Fig. 2).
+* `results/solver_comparison_1d.csv`, `plots/solver_comparison_1d.png`, & `plots/failure_rate_1d.png`: 1D matched-NFE solver comparison and nonfinite trajectory check (Table III, Fig. 3, and Fig. 4).
+* `results/solver_comparison_2d.csv` & `plots/solver_comparison_2d.png`: 2D matched-NFE solver comparison (Table IV and Fig. 5).
+
 ---
+
 ## 5. Citation
-If you use this code in your research, please cite:Code snippet@inproceedings{roudro2026lyapunov,
+
+If you use this code in your research, please cite:
+
+```bibtex
+@inproceedings{roudro2026lyapunov,
   author    = {Roudro, M Taufiqul Islam and Zihad, Mahmudul Hasan and Ameen, Mohd Ruhul},
   title     = {Finite-Time Lyapunov Analysis of Probability Flow ODEs in Bimodal Score-Based Diffusion},
   booktitle = {2026 International Conference on Recent Progresses in Science, Engineering and Technology (ICRPSET)},
   year      = {2026}
 }
----
+
+```
